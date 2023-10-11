@@ -10,11 +10,12 @@ import InvoiceModal from './InvoiceModal';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 class InvoiceForm extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       isOpen: false,
-      currency: '$',
+      currency: 'Ksh',
       currentDate: '',
       invoiceNumber: 1,
       dateOfIssue: '',
@@ -51,6 +52,8 @@ class InvoiceForm extends React.Component {
     this.state.items.splice(index, 1);
     this.setState(this.state.items);
   };
+  
+  
   handleAddEvent(evt) {
     var id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
     var items = {
@@ -88,6 +91,7 @@ class InvoiceForm extends React.Component {
     });
 
   };
+  
   onItemizedItemEdit(evt) {
     var item = {
       id: evt.target.id,
@@ -97,7 +101,7 @@ class InvoiceForm extends React.Component {
     var items = this.state.items.slice();
     var newItems = items.map(function(items) {
       for (var key in items) {
-        if (key == item.name && items.id == item.id) {
+        if (key === item.name && items.id === item.id) {
           items[key] = item.value;
         }
       }
@@ -210,6 +214,9 @@ class InvoiceForm extends React.Component {
             <Form.Group className="mb-3">
               <Form.Label className="fw-bold">Currency:</Form.Label>
               <Form.Select onChange={event => this.onCurrencyChange({currency: event.target.value})} className="btn btn-light my-1" aria-label="Change Currency">
+                <option value="Ksh">KSH (Kenyan Shilling)</option>
+                <option value="ZAR">ZAR (South African Rand)</option>
+                <option value="N">NGN (Nigerian  Naira)</option>
                 <option value="$">USD (United States Dollar)</option>
                 <option value="£">GBP (British Pound Sterling)</option>
                 <option value="¥">JPY (Japanese Yen)</option>
