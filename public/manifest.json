@@ -1,6 +1,6 @@
 {
-  "short_name": "Mayleen-Invoice-Generator",
-  "name": "Mayleen-Invoice-Generator",
+  "short_name": "mayleen-invoice-generator",
+  "name": "mayleen-invoice-generator",
   "icons": [
     {
       "src": "favicon.ico",
